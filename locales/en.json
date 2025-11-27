@@ -1,0 +1,33 @@
+{
+    "signIn": {
+        "title": "Sign in",
+        "email": "Email",
+        "emailPlaceholder": "Enter your email",
+        "password": "Password",
+        "passwordPlaceholder": "Enter your password",
+        "submit": "Sign in",
+        "forgottenPassword": "Forgotten password? Click here.",
+        "noAccountSignUp": "No Account? Please sign up."
+    },
+    "signUp": {
+        "title": "Sign Up",
+        "phone": "Phone number",
+        "phonePlaceholder": "Enter your phone number",
+        "email": "Email",
+        "emailPlaceholder": "Enter your email",
+        "firstname": "Firstname",
+        "firstnamePlaceholder": "Enter your firstname",
+        "lastname": "Lastname",
+        "lastnamePlaceholder": "Enter your lastname",
+        "nickname": "Nickname",
+        "nicknameInfo": "The name that will show to other users",
+        "nicknamePlaceholder": "Enter your nicktname",
+        "password": "Password",
+        "passwordPlaceholder": "Enter your password",
+        "repeatPassword": "Repeat password",
+        "repeatPasswordPlaceholder": "Repeat your password",
+        "profile": "Profile picture",
+        "uploadImage": "Upload image",
+        "submit": "Sign up"
+    }
+}

@@ -44,7 +44,7 @@ export default function SignUp() {
       body: formData,
     })
       .then((res) => res.json())
-      .then((data) => console.log("SERVER OK:", data))
+      .then((data) => console.log("NEW USER:", data))
       .catch((err) => console.log("ERROR:", err));
   }
 

@@ -1,4 +1,4 @@
-import { Link } from "expo-router";
+import { Link, Redirect } from "expo-router";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
@@ -8,9 +8,33 @@ export default function SignIn() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLogged, setIsLogged] = useState(false);
 
   function onSubmit() {
-    console.log("Login attempt:", { email, password });
+    if (!email || !password) {
+      alert("Please enter email and password");
+      return;
+    }
+
+    fetch("http://localhost:8090/users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Login successful:", data);
+        setIsLogged(true);
+      })
+      .catch((err) => {
+        console.log("Login failed:", err);
+      });
+  }
+
+  if (isLogged) {
+    return <Redirect href="/components/adventure/adventures" />;
   }
 
   return (

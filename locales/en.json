@@ -29,5 +29,21 @@
         "profile": "Profile picture",
         "uploadImage": "Upload image",
         "submit": "Sign up"
+    },
+    "adventures": {
+        "title": "Adventures",
+        "ongoing": "Ongoing adventures",
+        "findAdventures": "Find your next adventure!",
+        "tabs": {
+            "adventures": "Adventures",
+            "find": "Find",
+            "quests": "Quests"
+        },
+        "find": {
+            "title": "Find a quest"
+        },
+        "quests": {
+            "title": "Quests"
+        }
     }
 }

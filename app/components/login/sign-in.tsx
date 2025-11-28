@@ -1,3 +1,5 @@
+import { User } from "@/app/models/User";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Link, Redirect } from "expo-router";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -26,11 +28,20 @@ export default function SignIn() {
       .then((res) => res.json())
       .then((data) => {
         console.log("Login successful:", data);
+        onLoginSuccess(data);
         setIsLogged(true);
       })
       .catch((err) => {
         console.log("Login failed:", err);
       });
+  }
+
+  async function onLoginSuccess(user: User) {
+    try {
+      await AsyncStorage.setItem("adventurer", JSON.stringify(user));
+    } catch (e) {
+      console.log("Failed to save user:", e);
+    }
   }
 
   if (isLogged) {

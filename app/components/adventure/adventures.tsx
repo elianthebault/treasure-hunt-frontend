@@ -1,6 +1,5 @@
 import { Adventure } from "@/app/models/Adventure";
-import { User } from "@/app/models/User";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useAuth } from "@/utils/AuthContext";
 import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -9,21 +8,10 @@ import Header from "../commons/header";
 
 export default function Adventures() {
   const { t } = useTranslation();
-  const [adventurer, setAdventurer] = useState<User>();
   const [adventures, setAdventures] = useState<Adventure[]>([]);
   const router = useRouter();
 
-  useEffect(() => {
-    async function loadAdventurer() {
-      const userStr = await AsyncStorage.getItem("adventurer");
-      if (userStr) {
-        const user: User = JSON.parse(userStr);
-        setAdventurer(user);
-        getAdventures(user.uuid);
-      }
-    }
-    loadAdventurer();
-  }, []);
+  const { user, refreshUser } = useAuth();
 
   async function getAdventures(uuid: string) {
     const res = await fetch(`http://localhost:8090/adventurer/${uuid}`);
@@ -31,12 +19,18 @@ export default function Adventures() {
     setAdventures(data);
   }
 
+  useEffect(() => {
+    if (user) {
+      getAdventures(user!.uuid);
+    }
+  }, [user]);
+
   return (
     <View style={styles.container}>
       <Header />
       {/* <Menu /> */}
       <Text style={styles.h1}>
-        {adventurer?.nickname + "'s " + t("adventures.title")}
+        {user?.nickname + "'s " + t("adventures.title")}
       </Text>
       {adventures && adventures.length > 0 ? (
         <Text style={styles.subtitle}>{t("adventures.ongoing")}</Text>

@@ -1,5 +1,4 @@
-import { User } from "@/app/models/User";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useAuth } from "@/utils/AuthContext";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { StyleSheet, Text, TextInput, View } from "react-native";
@@ -8,7 +7,7 @@ import Header from "../commons/header";
 export default function CreateQuest() {
   const { t } = useTranslation();
 
-  const [user, setUser] = useState<User | null>(null);
+  const { user, refreshUser } = useAuth();
 
   const [post, setPost] = useState({
     authorUUID: "",
@@ -18,22 +17,10 @@ export default function CreateQuest() {
   });
 
   useEffect(() => {
-    async function loadAdventurer() {
-      const userStr = await AsyncStorage.getItem("adventurer");
-      if (!userStr) return;
-
-      const parsedUser: User = JSON.parse(userStr);
-
-      setUser(parsedUser);
-
-      setPost((prev) => ({
-        ...prev,
-        authorUUID: parsedUser.uuid,
-      }));
+    if (user) {
+      setPost((prev) => ({ ...prev, authorUUID: user.uuid }));
     }
-
-    loadAdventurer();
-  }, []);
+  }, [user]);
 
   function onSubmit() {
     const formData = new FormData();

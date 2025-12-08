@@ -1,5 +1,5 @@
 import { Quest } from "@/app/models/Quest";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useAuth } from "@/utils/AuthContext";
 import { router } from "expo-router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -10,23 +10,19 @@ export default function Quests() {
   const { t } = useTranslation();
   const [quests, setQuests] = useState<Quest[]>([]);
 
-  useEffect(() => {
-    async function loadAdventurer() {
-      const userStr = await AsyncStorage.getItem("adventurer");
-      if (!userStr) return;
-
-      const user = JSON.parse(userStr);
-      getQuests(user.uuid);
-    }
-
-    loadAdventurer();
-  }, []);
+  const { user, refreshUser } = useAuth();
 
   async function getQuests(uuid: string) {
     const res = await fetch(`http://localhost:8090/quests/${uuid}`);
     const data: Quest[] = await res.json();
     setQuests(data);
   }
+
+  useEffect(() => {
+    if (user) {
+      getQuests(user!.uuid);
+    }
+  }, [user]);
 
   return (
     <View style={styles.container}>
@@ -40,7 +36,7 @@ export default function Quests() {
           onPress={() => router.push("/components/quest/createQuest")}
         >
           <Text style={styles.buttonText}>
-            {t("adventures.quests.createQuest")}
+            {t("adventures.quests.newQuest")}
           </Text>
         </Pressable>
       )}

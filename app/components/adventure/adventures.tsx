@@ -5,6 +5,7 @@ import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import Header from "../commons/header";
 
 export default function Adventures() {
   const { t } = useTranslation();
@@ -32,6 +33,8 @@ export default function Adventures() {
 
   return (
     <View style={styles.container}>
+      <Header />
+      {/* <Menu /> */}
       <Text style={styles.h1}>
         {adventurer?.nickname + "'s " + t("adventures.title")}
       </Text>
@@ -60,8 +63,8 @@ export const _stack = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: "90%",
-    margin: "auto",
+    width: "100%",
+    paddingHorizontal: 10,
   },
   h1: {
     fontSize: 21,

@@ -43,7 +43,16 @@
             "title": "Find a quest"
         },
         "quests": {
-            "title": "Quests"
+            "title": "Quests",
+            "myQuests": "My quests",
+            "createQuest": {
+                "title": "Create a quest",
+                "subtitle": "You're about to create a new quest so others can experience the adventure you imagined for them.",
+                "nameLabel": "Name your quest",
+                "namePlaceholder": "Enter the name of the quest",
+                "loreLabel": "Let free your imagination",
+                "lorePlaceholder": "Add some lore to make it entertaining..."
+            }
         }
     }
 }

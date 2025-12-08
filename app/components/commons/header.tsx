@@ -5,13 +5,27 @@ export default function Header() {
   const router = useRouter();
   return (
     <View style={styles.header}>
-      <Pressable onPress={() => router.push("/components/commons/profile")}>
+      <Pressable
+        style={styles.profileBtn}
+        onPress={() => router.push("/components/commons/profile")}
+      >
         <Text>profile</Text>
       </Pressable>
     </View>
   );
 }
 
+function toggleMenu() {
+  console.log("MENU");
+}
+
 const styles = StyleSheet.create({
-  header: {},
+  header: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    zIndex: 99,
+  },
+  profileBtn: {},
+  menuBtn: {},
 });

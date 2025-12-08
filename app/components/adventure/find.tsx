@@ -5,7 +5,7 @@ export default function Find() {
   const { t } = useTranslation();
 
   return (
-    <View>
+    <View style={styles.container}>
       <Text style={styles.h1}>{t("adventures.find.title")}</Text>
     </View>
   );
@@ -14,8 +14,8 @@ export default function Find() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: "90%",
-    margin: "auto",
+    width: "100%",
+    paddingHorizontal: 10,
   },
   h1: {
     fontSize: 21,

@@ -45,6 +45,7 @@
         "quests": {
             "title": "Quests",
             "myQuests": "My quests",
+            "newQuest": "Create a new quest",
             "createQuest": {
                 "title": "Create a quest",
                 "subtitle": "You're about to create a new quest so others can experience the adventure you imagined for them.",

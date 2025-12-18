@@ -8,6 +8,6 @@ export type Step = {
   previousStep?: Step;
   longitude?: number;
   latitude?: number;
-  altitude?: number;
+  radius?: number;
   valid?: boolean;
 };

@@ -1,4 +1,5 @@
 import { User } from "@/app/models/User";
+import { API_URL } from "@/utils/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Link, Redirect } from "expo-router";
 import { useState } from "react";
@@ -18,7 +19,7 @@ export default function SignIn() {
       return;
     }
 
-    fetch("http://localhost:8090/users/login", {
+    fetch(`${API_URL}/users/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

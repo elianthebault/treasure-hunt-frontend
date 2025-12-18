@@ -1,4 +1,5 @@
 import * as ImagePicker from "expo-image-picker";
+import { router } from "expo-router";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
@@ -44,7 +45,10 @@ export default function SignUp() {
       body: formData,
     })
       .then((res) => res.json())
-      .then((data) => console.log("NEW USER:", data))
+      .then((data) => {
+        router.replace("/components/login/sign-in");
+        console.log("NEW USER:", data);
+      })
       .catch((err) => console.log("ERROR:", err));
   }
 

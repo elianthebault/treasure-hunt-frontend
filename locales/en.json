@@ -52,7 +52,15 @@
                 "nameLabel": "Name your quest",
                 "namePlaceholder": "Enter the name of the quest",
                 "loreLabel": "Let free your imagination",
-                "lorePlaceholder": "Add some lore to make it entertaining..."
+                "lorePlaceholder": "Add some lore to make it entertaining...",
+                "firstStep": "The first mystery of your quest",
+                "mystery": "This first step sets the tone of your quest. Create a fun mystery that leads adventurers to an easy-to-reach, safe location. Choose places that are accessible and public.",
+                "riddleLabel": "Riddle",
+                "riddlePlaceholder": "A fun riddle to find the first marker of your quest.",
+                "clueLabel": "Clue",
+                "cluePlaceholder": "A hint to guide adventurers forward.",
+                "placeMarker": "Place the token to be found",
+                "submit": "Create the quest"
             }
         }
     }
